@@ -1,25 +1,25 @@
 class Solution {
     public int maxProductDifference(int[] nums) {
-        int s=Integer.MAX_VALUE;
-        int ss=Integer.MAX_VALUE;
-        int l=Integer.MIN_VALUE;
-        int sl=Integer.MIN_VALUE;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]>=l){
-                sl=l;
-                l=nums[i];
-            }
-            else if(nums[i]>=sl && nums[i]!=l){
-                sl=nums[i];
-            }
-            if(nums[i]<=s){
-                ss=s;
-                s=nums[i];
-            }
-            else if(nums[i]<=ss && nums[i]!=s){
-                ss=nums[i];
+        int max = -1;
+        int secMax = -2;
+        for (int n : nums) {
+            if (n >= max) {
+                secMax = max;
+                max = n;
+            } else if (n > secMax) {
+                secMax = n;
             }
         }
-        return l*sl-s*ss;
+        int min = Integer.MAX_VALUE;
+        int secMin = Integer.MAX_VALUE - 1;
+        for (int n : nums) {
+            if (n <= min) {
+                secMin = min;
+                min = n;
+            } else if (n < secMin) {
+                secMin = n;
+            }
+        }
+        return (max * secMax) - (min * secMin);
     }
 }
