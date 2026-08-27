@@ -15,7 +15,6 @@ class Solution {
                 tl=num;
             }
         }
-        if(tl==Long.MIN_VALUE)return (int)(l);
-        return (int)(tl);
+        return tl==Long.MIN_VALUE?(int)l:(int)tl;
     }
 }
