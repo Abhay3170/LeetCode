@@ -1,7 +1,17 @@
 class Solution {
     public boolean isSameAfterReversals(int num) {
-        if(num==0)return true;
-        if(num%10==0)return false;
-        return true;
+        int rev1 = reverse(num);
+         int rev2 = reverse(rev1);
+
+         return num==rev2;
+    }
+    public int reverse(int num){
+        int rev = 0;
+        while(num!=0){
+            int digit = num%10;
+            rev = rev*10 + digit;
+            num = num/10;
+        }
+        return rev;
     }
 }
