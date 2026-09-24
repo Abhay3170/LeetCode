@@ -1,21 +1,17 @@
 class Solution {
     public String interpret(String command) {
-        int i=0;
-        String s="";
-        while(i<command.length()){
-            if(command.charAt(i)=='G'){
-                s+="G";
+        StringBuilder ans = new StringBuilder();
+        for(int i = 0; i < command.length(); i++){
+            if(command.charAt(i) == 'G'){
+                ans.append("G");
+            }else if(command.charAt(i) == '(' && command.charAt(i + 1) == ')'){
+                ans.append("o");
                 i++;
-            }
-            else if(command.charAt(i)=='(' && command.charAt(i+1)==')'){
-                s+="o";
-                i+=2;
-            }
-            else{
-                s+="al";
-                i+=4;
+            }else{
+                ans.append("al");
+                i += 3;
             }
         }
-        return s;
+        return ans.toString();
     }
 }
